@@ -1,0 +1,248 @@
+:root {
+    --primary-color: #6200ee;
+    --primary-color-dark: #3700b3;
+    --background-color: #f4f4f8;
+    --text-color: #212121;
+    --text-color-light: #666;
+    --border-color: #e0e0e0;
+    --delete-color: #b00020;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    perspective: 1000px;
+    overflow-x: hidden;
+}
+
+
+@keyframes dynamicEntrance {
+    0% {
+        opacity: 0;
+        transform: 
+            translateY(50px) 
+            rotateX(-90deg) 
+            scale(0.8);
+    }
+    70% {
+        opacity: 0.7;
+        transform: 
+            translateY(-10px) 
+            rotateX(20deg) 
+            scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: 
+            translateY(0) 
+            rotateX(0) 
+            scale(1);
+    }
+}
+
+@keyframes subtleFloating {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-10px); 
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 10px 25px rgba(98, 0, 238, 0.1);
+    }
+    50% {
+        box-shadow: 0 15px 35px rgba(98, 0, 238, 0.2);
+    }
+}
+
+@keyframes checkmarkAnimation {
+    0% { 
+        transform: scale(0) rotate(-45deg); 
+    }
+    100% { 
+        transform: scale(1) rotate(0deg); 
+    }
+}
+
+
+.main {
+    background-color: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    padding: 35px;
+    transform-style: preserve-3d;
+    animation: 
+        dynamicEntrance 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards,
+        glowPulse 3s ease-in-out infinite;
+    transition: all 0.4s ease;
+}
+
+.main:hover {
+    transform: scale(1.02) rotateX(3deg);
+    box-shadow: 0 15px 35px rgba(98, 0, 238, 0.15);
+}
+
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+    animation: subtleFloating 3s ease-in-out infinite;
+}
+
+
+form {
+    display: flex;
+    margin-bottom: 25px;
+    gap: 10px;
+    transform-style: preserve-3d;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(98, 0, 238, 0.1);
+    transform: scale(1.02);
+}
+
+button {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Todo List Styling */
+#allTodo {
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.singleTodo {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    perspective: 1000px;
+}
+
+.singleTodo:hover {
+    background-color: rgba(98, 0, 238, 0.04);
+    transform: translateX(10px) rotateY(5deg);
+}
+
+.singleTodo h2 {
+    flex: 1;
+    margin-left: 15px;
+    font-size: 16px;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.singleTodo h2.completed {
+    text-decoration: line-through;
+    color: var(--text-color-light);
+    position: relative;
+}
+
+.singleTodo h2.completed::after {
+    content: '✓';
+    position: absolute;
+    left: -25px;
+    color: var(--primary-color);
+    animation: checkmarkAnimation 0.4s ease-out;
+}
+
+.singleTodo input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.singleTodo input[type="checkbox"]:checked {
+    transform: scale(1.2);
+}
+
+.singleTodo button {
+    background-color: var(--delete-color);
+    padding: 6px 12px;
+    margin-left: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.singleTodo button:hover {
+    background-color: #930012;
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        width: 95%;
+        padding: 20px;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    form input[type="text"],
+    form button {
+        width: 100%;
+    }
+}
+.singleTodo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.completed{
+    text-decoration: line-through;
+}
+
