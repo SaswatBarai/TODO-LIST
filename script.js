@@ -13,6 +13,7 @@ function displayTodo() {
   });
 }
 
+
 function todoStruture(singleTodo, id) {
   let newDiv = document.createElement("div");
   newDiv.className = "singleTodo";
