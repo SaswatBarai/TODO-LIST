@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="taskGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6A11CB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2575FC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with slight rounded corners -->
+  <rect width="64" height="64" rx="10" ry="10" fill="url(#taskGradient)"/>
+  
+  <!-- Stylized clipboard/todo list icon -->
+  <path d="M22 18h20v4H22z" fill="white"/>
+  <rect x="22" y="26" width="20" height="4" rx="2" ry="2" fill="white"/>
+  <rect x="22" y="34" width="14" height="4" rx="2" ry="2" fill="white"/>
+  
+  <!-- Paper clip element -->
+  <path d="M40 16l-2-2a2.828 2.828 0 00-4 0l-14 14v6h6l14-14a2.828 2.828 0 000-4z" 
+        fill="#ffffff66" 
+        stroke="white" 
+        stroke-width="2"/>
+</svg>
